@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: int_account_activity
+    description: "Account-level activity metrics aggregated from events. One row per account including accounts with zero events. Used as a building block for mart models."
+    columns:
+      - name: account_id
+        description: "Primary key. Foreign key to stg_accounts."
+        tests:
+          - unique
+          - not_null
+      - name: total_events
+        description: "Total number of events fired by any user in this account. Zero for inactive accounts."
+      - name: active_user_count
+        description: "Number of distinct users who fired at least one event."
+      - name: days_since_last_event
+        description: "Days since the most recent event. Null for accounts with no events."
+      - name: is_active_last_30_days
+        description: "1 if the account had any event in the last 30 days, 0 otherwise."
+
+  - name: int_user_sessions
+    description: "User events sessionized with a 30-minute inactivity threshold. One row per session per user."
+    columns:
+      - name: user_id
+        description: "Foreign key to stg_users."
+        tests:
+          - not_null
+      - name: account_id
+        description: "Foreign key to stg_accounts."
+        tests:
+          - not_null
+      - name: user_session_number
+        description: "Sequential session number per user. Starts at 1."
+      - name: session_duration_minutes
+        description: "Length of session in minutes. Zero for single-event sessions."
