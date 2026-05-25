@@ -8,7 +8,7 @@ through to ML-ready churn risk models.
 ![DuckDB](https://img.shields.io/badge/DuckDB-1.10.1-yellow)
 ![Python](https://img.shields.io/badge/Python-3.10.6-blue)
 ![Tests](https://img.shields.io/badge/tests-48%20passing-brightgreen)
-
+![CI](https://github.com/Pratik-Bhandarkar/saasify-analytics/actions/workflows/dbt_ci.yml/badge.svg)
 ---
 
 ## Lineage Graph
