@@ -19,3 +19,5 @@ sub_017,acc_014,free,starter,99,2023-05-15,new_signup
 sub_018,acc_015,free,free,0,2023-06-01,new_signup
 sub_019,acc_002,starter,free,0,2023-10-01,downgrade
 sub_020,acc_009,starter,free,0,2023-11-01,churn
+sub_021,acc_006,starter,pro,299,2024-02-01,upgrade
+sub_022,acc_013,pro,enterprise,999,2024-02-15,upgrade

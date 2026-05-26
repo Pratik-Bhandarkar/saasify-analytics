@@ -1,6 +1,18 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='subscription_id',
+        incremental_strategy='merge'
+    )
+}}
+
 with subscriptions as (
 
     select * from {{ ref('stg_subscriptions') }}
+
+    {% if is_incremental() %}
+        where changed_at > (select max(changed_at) from {{ this }})
+    {% endif %}
 
 ),
 
